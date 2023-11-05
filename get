@@ -1,0 +1,14 @@
+  lw   $t0, 0($s7)           
+loop:
+    beqz $t0, end_loop         
+    lbu  $t1, 0($s7)           
+    addiu $s7, $s7, 1          
+    slt  $t2, $t1, 65         
+    bne  $t2, $zero, loop
+    slt  $t3, 90, $t1
+    bne  $t3, $zero, loop        
+    addiu $t1, $t1, 32         
+    sb   $t1, -1($s7)          
+    j    loop
+
+end_loop:
